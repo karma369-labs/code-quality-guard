@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "code-quality-guard"
+version = "0.1.0"
+description = "A Python code quality, security, and standards gatekeeper."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+	"click>=8.1",
+	"mypy>=1.11",
+	"pydantic>=2.8",
+	"rich>=13.7",
+	"ruff>=0.6",
+]
+
+[project.scripts]
+code-quality-guard = "code_quality_guard.cli:main"
+
+[dependency-groups]
+dev = [
+	"pre-commit>=3.8",
+	"pytest>=8.3",
+	"pytest-cov>=5.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/code_quality_guard"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
