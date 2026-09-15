@@ -1,0 +1,19 @@
+- id: cqg
+  name: Code Quality Guard
+  entry: code-quality-guard
+  language: python
+  language_version: python3.12
+  pass_filenames: false
+  require_serial: true
+  types: [python]
+  description: |
+    Run Ruff linting, Ruff formatting checks, and Mypy over the project.
+  args:
+    - --tool
+    - ruff
+    - --tool
+    - ruff-format
+    - --tool
+    - mypy
+    - --check-only
+    - .
