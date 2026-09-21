@@ -1,12 +1,12 @@
 # Code Quality Guard
 
 [![CI](https://github.com/karma369-labs/code-quality-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/karma369-labs/code-quality-guard/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/code-quality-guard)](https://pypi.org/project/code-quality-guard/)
+[![PyPI](https://img.shields.io/pypi/v/py-code-quality-guard)](https://pypi.org/project/py-code-quality-guard/)
 [![Python](https://img.shields.io/badge/python-3.12%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Ruff](https://img.shields.io/badge/linter-Ruff-D7FF64?logo=ruff&logoColor=black)](https://docs.astral.sh/ruff/)
 [![Mypy](https://img.shields.io/badge/type%20checker-Mypy-4B8BBE?logo=mypy&logoColor=white)](https://mypy-lang.org/)
 
-`code-quality-guard` is a CI-friendly command-line quality gate for Python
+`py-code-quality-guard` is a CI-friendly command-line quality gate for Python
 projects. It runs Ruff linting, Ruff formatting, and Mypy through one
 consistent interface, with human-readable or JSON output for local workflows
 and automation.
@@ -41,7 +41,7 @@ uv sync --dev
 
 ## Pre-commit Hook
 
-Add `code-quality-guard` to a project-level `.pre-commit-config.yaml`:
+Add `py-code-quality-guard` to a project-level `.pre-commit-config.yaml`:
 
 ```yaml
 repos:
@@ -68,45 +68,45 @@ release tag.
 Run all checks against the current directory:
 
 ```bash
-py-code-quality-guard .
+pyqguard .
 ```
 
 Run selected tools:
 
 ```bash
-py-code-quality-guard --tool ruff --tool mypy src/
+pyqguard --tool ruff --tool mypy src/
 ```
 
 Checks report the tools' diagnostics without changing files by default:
 
 ```bash
-py-code-quality-guard --tool ruff-format .
+pyqguard --tool ruff-format .
 ```
 
 Apply supported fixes:
 
 ```bash
-py-code-quality-guard --tool ruff --tool ruff-format --fix .
+pyqguard --tool ruff --tool ruff-format --fix .
 ```
 
 Produce machine-readable output:
 
 ```bash
-py-code-quality-guard --output json .
+pyqguard --output json .
 ```
 
 Pass an additional argument to a selected tool. Repeat `--tool-arg` as
 needed:
 
 ```bash
-py-code-quality-guard \
+pyqguard \
 	--tool ruff \
 	--tool-arg ruff --select \
 	--tool-arg ruff E,F \
 	.
 ```
 
-Run `code-quality-guard --help` for the complete option reference.
+Run `pyqguard --help` for the complete option reference.
 
 ## Development
 

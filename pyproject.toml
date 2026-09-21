@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "code-quality-guard"
+name = "py-code-quality-guard"
 version = "0.1.0"
 description = "Automated Code Quality Guard for Python"
 readme = "README.md"
@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.scripts]
-code-quality-guard = "code_quality_guard.cli:main"
+pyqguard = "code_quality_guard.cli:main"
 
 [dependency-groups]
 dev = [
