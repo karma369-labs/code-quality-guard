@@ -13,7 +13,7 @@ class RuffFormatTool:
 
     def run(self, settings: Settings) -> CommandResult:
         command = [resolve_executable("ruff"), "format", str(settings.target)]
-        if settings.check_only:
+        if not settings.fix or settings.check_only:
             command.append("--check")
         command.extend(settings.tool_args.get(self.name, ()))
         cwd = settings.target if settings.target.is_dir() else settings.target.parent

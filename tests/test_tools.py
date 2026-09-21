@@ -29,13 +29,22 @@ def test_ruff_forwards_fix_and_tool_arguments(tmp_path: Path) -> None:
     assert runner.commands == [[RUFF_EXECUTABLE, "check", str(tmp_path), "--fix", "--select", "E"]]
 
 
-def test_ruff_format_forwards_check_only(tmp_path: Path) -> None:
+def test_ruff_format_checks_by_default(tmp_path: Path) -> None:
     runner = FakeRunner()
-    settings = Settings(target=tmp_path, check_only=True)
+    settings = Settings(target=tmp_path)
 
     RuffFormatTool(runner).run(settings)
 
     assert runner.commands == [[RUFF_EXECUTABLE, "format", str(tmp_path), "--check"]]
+
+
+def test_ruff_format_only_fixes_with_fix_flag(tmp_path: Path) -> None:
+    runner = FakeRunner()
+    settings = Settings(target=tmp_path, fix=True)
+
+    RuffFormatTool(runner).run(settings)
+
+    assert runner.commands == [[RUFF_EXECUTABLE, "format", str(tmp_path)]]
 
 
 def test_mypy_forwards_tool_arguments(tmp_path: Path) -> None:
