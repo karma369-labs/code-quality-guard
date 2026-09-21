@@ -30,7 +30,7 @@ and automation.
 Install the latest release from PyPI in an active virtual environment:
 
 ```bash
-python -m pip install code-quality-guard
+python -m pip install py-code-quality-guard
 ```
 
 For local development with `uv`:
@@ -68,38 +68,38 @@ release tag.
 Run all checks against the current directory:
 
 ```bash
-code-quality-guard .
+py-code-quality-guard .
 ```
 
 Run selected tools:
 
 ```bash
-code-quality-guard --tool ruff --tool mypy src/
+py-code-quality-guard --tool ruff --tool mypy src/
 ```
 
-Check formatting without changing files:
+Checks report the tools' diagnostics without changing files by default:
 
 ```bash
-code-quality-guard --tool ruff-format --check-only .
+py-code-quality-guard --tool ruff-format .
 ```
 
 Apply supported fixes:
 
 ```bash
-code-quality-guard --tool ruff --tool ruff-format --fix .
+py-code-quality-guard --tool ruff --tool ruff-format --fix .
 ```
 
 Produce machine-readable output:
 
 ```bash
-code-quality-guard --output json .
+py-code-quality-guard --output json .
 ```
 
 Pass an additional argument to a selected tool. Repeat `--tool-arg` as
 needed:
 
 ```bash
-code-quality-guard \
+py-code-quality-guard \
 	--tool ruff \
 	--tool-arg ruff --select \
 	--tool-arg ruff E,F \
@@ -127,17 +127,6 @@ uv run pre-commit run --all-files
 
 Pull requests targeting `main` run the same pre-commit checks in GitHub Actions.
 
-## Project Layout
-
-```text
-src/code_quality_guard/
-├── application/   Orchestration for quality checks
-├── config/        Runtime settings
-├── reporter/      Text and JSON output
-├── tools/         Ruff and Mypy integrations
-└── cli.py         Click command-line interface
-tests/             Automated tests
-```
 
 ## License
 
